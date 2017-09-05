@@ -26,6 +26,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleSubmitButtonAction(ActionEvent event) {
+    	
         actiontarget.setText("'Start a new test' button activated");
     }
     

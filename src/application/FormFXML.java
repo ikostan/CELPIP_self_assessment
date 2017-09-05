@@ -5,6 +5,8 @@
  */
 package application;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,24 +20,45 @@ import javafx.stage.Stage;
 public class FormFXML extends Application {
     
 	private final String TITLE = "CELPIP: Self Assesment Test Tool";
-	private final int WIDTH = 600, HEIGHT =  450;
+	private final int WIDTH = 600, HEIGHT =  450;	
+	private Parent startPage, testPage;
+	private StringBuilder error;
 	
     @Override
     public void start(Stage stage) throws Exception {
        
-    	Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+    	error = new StringBuilder();
+    	
+    	prepareParent();
         
-        Scene scene = new Scene(root, WIDTH, HEIGHT);
+        Scene scene = new Scene(startPage, WIDTH, HEIGHT);
         stage.setTitle(TITLE);
         stage.setScene(scene);
         stage.show();
     }
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
+    
+    
+    //Prepare PARENT objects
+    private void prepareParent(){
+    	
+    	try {
+    		
+			startPage = FXMLLoader.load(getClass().getResource("FXMLStart.fxml"));
+	    	testPage = FXMLLoader.load(getClass().getResource("FXMLtest.fxml"));
+
+		} catch (IOException e) {
+			
+			//TODO: show error message
+			e.printStackTrace();
+		}
+    }
+
     
 }
