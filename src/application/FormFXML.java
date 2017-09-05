@@ -1,4 +1,3 @@
-
 package application;
 
 import java.io.IOException;
@@ -8,17 +7,26 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
 /**
  *
  * @author Egor Kostan
  */
+
 public class FormFXML extends Application {
     
 	private final String TITLE = "CELPIP: Self Assesment Test Tool";
-	private final int WIDTH = 600, HEIGHT =  450;	
+	private final int WIDTH = 700, HEIGHT =  450;	
 	
 	private Scene scene;
 	
@@ -36,15 +44,13 @@ public class FormFXML extends Application {
     	
     	setMenu();
     	prepareParent();
-        
     	
     	
-
-    	
-    	
-        scene = new Scene(startPage, WIDTH, HEIGHT);       
+        scene = new Scene(startPage, WIDTH, HEIGHT);  
+  
         stage.setTitle(TITLE);
         stage.setScene(scene);
+        //stage.setResizable(false);
         stage.show();
     }
     
@@ -59,19 +65,22 @@ public class FormFXML extends Application {
     //Create menu items
     private void setMenu(){
     	
+    	//Menu Bar
     	menuBar = new MenuBar();
    	 
+    	//Menu Items
         menuFile = new Menu("File");
         menuPreferences = new Menu("Preferences"); 
         menuHelp = new Menu("Help"); 
+        
+        //Add menu items to the menu
+        menuBar.getMenus().addAll(menuFile, menuPreferences, menuHelp);
     }
     
     
     //Add menu items to the main scene
     private void addMenu(){
     	
-        menuBar.getMenus().addAll(menuFile, menuPreferences, menuHelp);
-        ((GridPane) scene.getRoot()).getChildren().addAll(menuBar);
     }
     
     
@@ -80,8 +89,8 @@ public class FormFXML extends Application {
     	
     	try {
     		
-			startPage = FXMLLoader.load(getClass().getResource("FXMLStart.fxml"));
-	    	testPage = FXMLLoader.load(getClass().getResource("FXMLtest.fxml"));
+			startPage = FXMLLoader.load(getClass().getResource("\\fxml_files\\FXMLStart.fxml"));
+	    	testPage = FXMLLoader.load(getClass().getResource("\\fxml_files\\FXMLtest.fxml"));
 
 		} catch (IOException e) {
 			
