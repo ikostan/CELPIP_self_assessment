@@ -1,37 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package application;
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
  *
- * @author Kostan Egor
+ * @author Egor Kostan
  */
 public class FormFXML extends Application {
     
 	private final String TITLE = "CELPIP: Self Assesment Test Tool";
 	private final int WIDTH = 600, HEIGHT =  450;	
+	
+	private Scene scene;
+	
 	private Parent startPage, testPage;
 	private StringBuilder error;
+	
+	private MenuBar menuBar;
+	private Menu menuFile, menuPreferences, menuHelp;
+	
 	
     @Override
     public void start(Stage stage) throws Exception {
        
     	error = new StringBuilder();
     	
+    	setMenu();
     	prepareParent();
         
-        Scene scene = new Scene(startPage, WIDTH, HEIGHT);
+    	
+    	
+
+    	
+    	
+        scene = new Scene(startPage, WIDTH, HEIGHT);       
         stage.setTitle(TITLE);
         stage.setScene(scene);
         stage.show();
@@ -42,6 +53,25 @@ public class FormFXML extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    
+    //Create menu items
+    private void setMenu(){
+    	
+    	menuBar = new MenuBar();
+   	 
+        menuFile = new Menu("File");
+        menuPreferences = new Menu("Preferences"); 
+        menuHelp = new Menu("Help"); 
+    }
+    
+    
+    //Add menu items to the main scene
+    private void addMenu(){
+    	
+        menuBar.getMenus().addAll(menuFile, menuPreferences, menuHelp);
+        ((GridPane) scene.getRoot()).getChildren().addAll(menuBar);
     }
     
     
