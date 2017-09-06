@@ -27,6 +27,7 @@ public class ErrorDialog {
 		alert.setTitle(TITLE);
 		alert.setHeaderText(headerTxt);
 		alert.setContentText(errorTxt);
+		alert.showAndWait();
 	}
 	
 }
